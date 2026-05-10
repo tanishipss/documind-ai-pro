@@ -10,11 +10,170 @@
 ![ChromaDB](https://img.shields.io/badge/ChromaDB-Vector%20DB-orange?style=for-the-badge)
 
 **Transform static documents into intelligent, adaptive learning experiences.**  
-Powered by RAG architecture, local LLMs via Ollama, and semantic vector search.
+Powered by RAG architecture, local LLMs via Ollama, and semantic vector search.  
+Zero API keys. Fully offline. Completely free.
 
-[Features](#-features) • [Tech Stack](#-tech-stack) • [Installation](#-installation) • [Usage](#-usage) • [Architecture](#-architecture) • [Screenshots](#-screenshots)
+[Features](#-features) • [Screenshots](#-screenshots) • [Tech Stack](#-tech-stack) • [Installation](#-installation) • [Usage](#-usage) • [Architecture](#-architecture)
 
 </div>
+
+---
+
+## 📸 Screenshots
+
+> 📌 **To add screenshots:** create a `screenshots/` folder in the project root, take screenshots of each feature, and save them with the filenames shown below. GitHub will render them automatically.
+
+---
+
+### Landing Page
+*Three.js animated landing with particle effects and wireframe shapes*
+
+<!-- Take screenshot of: http://localhost:5173 — the animated dark background with "DocuMind AI" heading, tagline, and "Get Started Free" button -->
+![Landing Page](screenshots/landing.png)
+
+---
+
+### Sign Up & Login
+*JWT-based auth with email verification*
+
+<!-- Take screenshot of: the signup form OR login form — pink gradient card with email/password fields -->
+![Auth](screenshots/auth.png)
+
+---
+
+### Document Upload
+*Drag-and-drop upload with real-time extraction metadata*
+
+<!-- Take screenshot of: Documents tab AFTER uploading a PDF — showing the doc card (word count, page count, table count), RAG Pipeline Ready green badge, and chunks count -->
+![Document Upload](screenshots/upload.png)
+
+---
+
+### Vision AI Active
+*llava describes images, diagrams, and tables-as-images*
+
+<!-- Take screenshot of: the blue "👁️ Vision AI active — N images described by AI" banner that appears after uploading a PDF with images when llava is running -->
+![Vision AI](screenshots/upload_vision.png)
+
+---
+
+### Two-Document Comparison
+*Semantic diff shown immediately on upload*
+
+<!-- Take screenshot of: the comparison card after uploading two PDFs — similarity %, unchanged/modified/added/removed stat grid, common topic chips, added/removed section previews -->
+![Document Comparison](screenshots/doc_comparison.png)
+
+---
+
+### Quiz — Generation Screen
+*RAG-grounded MCQ with difficulty levels*
+
+<!-- Take screenshot of: the Quiz tab before generating — difficulty picker (Easy / Medium / Hard buttons), question count selector (10 / 12 / 15), Generate Quiz button -->
+![Quiz Generation](screenshots/quiz_generate.png)
+
+---
+
+### Quiz — Active Question
+*Dot navigation, 4 answer options, progress bar*
+
+<!-- Take screenshot of: a quiz question mid-session — the question text, four answer option buttons (one selected/highlighted), dot navigation row at the top, Submit button -->
+![Active Quiz](screenshots/quiz_active.png)
+
+---
+
+### Quiz — Results
+*Score breakdown with per-question correct/wrong indicators*
+
+<!-- Take screenshot of: the results screen after finishing a quiz — score card (X/10), per-question list showing ✅ correct and ❌ wrong with explanations, section badges (matched/updated/standard) -->
+![Quiz Results](screenshots/quiz_results.png)
+
+---
+
+### Weak Area Analysis
+*LLM-powered topic detection with page estimates and document passages*
+
+<!-- Take screenshot of: the weak area report cards below quiz results — topic name card with estimated page badge (pink), reason text (italic), document passage in purple box with filename, review hint in green box -->
+![Weak Areas](screenshots/weak_areas.png)
+
+---
+
+### Conversational Chat
+*Multi-turn RAG-grounded chat with streaming responses*
+
+<!-- Take screenshot of: the Chat tab with at least one exchange — user message bubble on the right, AI streaming answer on the left, showing that the answer references the document -->
+![Chat](screenshots/chat.png)
+
+---
+
+### AI Summary
+*Streaming structured summary with live token display*
+
+<!-- Take screenshot of: the Summary tab mid-stream OR after completion — showing the structured output with Overview, Key Points, Important Details sections -->
+![Summary](screenshots/summary.png)
+
+---
+
+### Flashcards
+*3D flip cards generated from key concepts*
+
+<!-- Take screenshot of: the Flashcards tab showing the card grid — ideally with one card flipped to show the back (answer/definition side) -->
+![Flashcards](screenshots/flashcards.png)
+
+---
+
+### Hybrid RAG Search
+*Vector similarity + keyword boost re-ranking*
+
+<!-- Take screenshot of: the Search tab with a query entered and results shown — each result card showing relevance score, filename, chunk index, and the passage text preview -->
+![Search](screenshots/search.png)
+
+---
+
+### Doc Compare Tab — Full Report
+*Full semantic version comparison with visual diff bar*
+
+<!-- Take screenshot of: the Doc Compare tab after running a comparison — similarity score circle, 4-stat grid, coloured distribution bar (green/yellow/blue/red), shared topic chips -->
+![Doc Compare](screenshots/doc_compare.png)
+
+---
+
+### Doc Compare — Section Previews
+*Added, modified, and removed section content*
+
+<!-- Take screenshot of: the section preview cards below the stats — the blue "Added Sections" cards and/or red "Removed Sections" cards showing actual text snippets -->
+![Doc Compare Previews](screenshots/doc_compare_previews.png)
+
+---
+
+### Progress Dashboard — Overview
+*Stat cards, accuracy trend chart, difficulty breakdown*
+
+<!-- Take screenshot of: the Progress tab → Overview sub-tab — showing the stat cards (Best Score, Total Quizzes, Avg Accuracy, Streak) and the accuracy line chart -->
+![Dashboard Overview](screenshots/dashboard_overview.png)
+
+---
+
+### Progress Dashboard — Weak Areas
+*Bar chart of topics by miss count*
+
+<!-- Take screenshot of: the Progress tab → Weak Areas sub-tab — showing the horizontal bar chart of topics ordered by how many times you got them wrong -->
+![Dashboard Weak Areas](screenshots/dashboard_weak_areas.png)
+
+---
+
+### Progress Dashboard — Guidance
+*RAG passages mapped to your weakest topics*
+
+<!-- Take screenshot of: the Progress tab → Guidance sub-tab — showing the topic guidance cards with document passage excerpts and source filenames -->
+![Dashboard Guidance](screenshots/dashboard_guidance.png)
+
+---
+
+### Progress Dashboard — History
+*Full quiz history table*
+
+<!-- Take screenshot of: the Progress tab → History sub-tab — the full table of past quizzes with timestamp, score, accuracy %, difficulty, topic, and mode columns -->
+![Dashboard History](screenshots/dashboard_history.png)
 
 ---
 
@@ -22,64 +181,58 @@ Powered by RAG architecture, local LLMs via Ollama, and semantic vector search.
 
 ### 📂 Document Processing
 - Upload **PDF, DOCX, TXT, MD** files (up to 2 documents simultaneously)
-- Rich text extraction with **table parsing** (pdfplumber) and **image extraction** (PyMuPDF)
-- Automatic **semantic chunking** with sentence-boundary awareness and overlap
+- Rich extraction — **text + tables** (pdfplumber) + **images** (PyMuPDF)
+- **Vision AI** — llava describes images, diagrams, charts, and image-based tables so they enter the RAG pipeline
+- Automatic **semantic chunking** (~600 words, sentence-boundary aware, overlapping)
 - Instant indexing into **ChromaDB vector database** via TF-IDF embeddings
 
-### 🔍 Semantic Document Comparison
-- Compare two document versions using **chunk-level cosine similarity**
-- Detects **Added / Modified / Removed / Unchanged** sections
-- Labels relationship as Identical / Partially Related / Different
-- Shows previews of changed sections with shared topic extraction
+### 🔬 Semantic Document Comparison
+- Compare two document versions using a **chunk-level cosine similarity matrix**
+- Detects **Added / Modified / Removed / Unchanged** sections with configurable thresholds
+- Shows overall similarity %, visual distribution bar, section previews, and shared topics
+- Available on upload (quick view) and in the dedicated **Doc Compare tab** (full report)
 
 ### 🧠 AI Quiz Generation
-- Generates **10–15 questions** per session grounded in RAG-retrieved chunks
+- Generates **10–15 RAG-grounded MCQ questions** per session
 - **3 difficulty levels** — Easy (recall), Medium (analysis), Hard (critical thinking)
-- **Dual-document mode** — splits questions between matched sections AND updated sections
+- **Dual-document mode** — questions split between matched and updated sections, labelled per question
+- **Version-aware regeneration** — regenerate questions only from changed sections
 - Dot navigation, progress bar, per-question explanations
-- **Version-aware regeneration** — generates questions only for changed sections
+
+### 🎯 LLM-Powered Weak Area Analysis
+- Ollama identifies **top 3 weak topic areas** from wrong answers with reasons and review hints
+- RAG retrieves the most relevant document passage per topic with estimated page numbers
+- Weak areas saved persistently and tracked in the progress dashboard
 
 ### 💬 Conversational Q&A
-- Multi-turn chat with **persistent history** saved to SQLite
-- Every answer RAG-grounded — only uses content from your document
+- Multi-turn chat **grounded exclusively in your document** via RAG context injection
 - Streaming responses via Server-Sent Events
-- Chat history survives page refreshes and server restarts
+- Persistent chat history saved to SQLite — survives refresh and restart
 
 ### ✨ AI Summary
 - Streaming summary with live token display
 - Structured output: Overview → Key Points → Important Details → Conclusions
-- Includes table data from documents in summary context
 
 ### 🃏 Flashcards
-- 10 AI-generated flashcards per session
-- 3D flip animation (click to reveal answer)
-- Grid navigation, category tags, progress tracking
+- 10 AI-generated flashcards focused on key concepts and definitions
+- 3D flip animation, grid navigation, category tags
 
 ### 🔍 Hybrid RAG Search
 - **Vector similarity + keyword boost** re-ranking
-- Returns relevance scores per chunk
-- Shows source filename and chunk index
+- Returns relevance scores, source filename, and chunk index per result
 
-### 🎯 Weak Area Detection
-- Analyzes wrong quiz answers to identify knowledge gaps
-- Maps weak topics back to **source document passages** via RAG
-- Saves personalized guidance to database for the Progress dashboard
-
-### 📊 Progress Dashboard
-- **5 tabs**: Overview · Accuracy Trend · Weak Areas · Guidance · History
-- Accuracy line chart and weak topics bar chart (Recharts)
-- Difficulty breakdown, best score, total questions answered
-- Full quiz history table with timestamps
-
-### 🔥 Engagement
+### 📊 Progress Dashboard — 5 tabs
+- **Overview** — stat cards, accuracy trend chart, difficulty split
+- **Accuracy Trend** — line chart + full scores table
+- **Weak Areas** — bar chart ordered by miss count
+- **Guidance** — RAG passages mapped to your weakest topics
+- **History** — full quiz history table with timestamps and modes
 - Daily **streak tracking** (localStorage)
-- Personalized learning guidance passages
 
 ### 🔐 Authentication
-- JWT-based signup/login (7-day tokens)
-- **Email verification** with tokenized links (24-hour expiry)
+- JWT-based signup/login (7-day tokens), bcrypt password hashing
+- Email verification with tokenized links (24-hour expiry)
 - Dev mode: verification link printed to console when SMTP not configured
-- bcrypt password hashing
 
 ---
 
@@ -89,11 +242,12 @@ Powered by RAG architecture, local LLMs via Ollama, and semantic vector search.
 |---|---|
 | **Backend** | Python 3.11, FastAPI, Uvicorn |
 | **Frontend** | React 18, Vite, React Router |
-| **LLM** | Ollama (llama3:8b, mistral, deepseek-r1 — local) |
+| **LLM (text)** | Ollama — llama3:8b (local, no API key) |
+| **LLM (vision)** | Ollama — llava (describes images and diagrams) |
 | **Vector DB** | ChromaDB (persistent, per-user collections) |
-| **Embeddings** | TF-IDF with bigrams + L2 normalization (no download required) |
-| **Database** | SQLite (users, quiz history, weak areas, chat, guidance) |
-| **PDF Extraction** | pdfplumber (text + tables), PyMuPDF (images), PyPDF2 (fallback) |
+| **Embeddings** | TF-IDF with bigrams + L2 normalization (no model download needed) |
+| **Database** | SQLite — 5 tables (users, quiz history, weak areas, guidance, chat) |
+| **PDF Extraction** | pdfplumber (text + tables), PyMuPDF (images) |
 | **Auth** | python-jose (JWT), bcrypt |
 | **Charts** | Recharts |
 | **3D Landing** | Three.js (animated particles + wireframe shapes) |
@@ -104,37 +258,39 @@ Powered by RAG architecture, local LLMs via Ollama, and semantic vector search.
 ## 📁 Project Structure
 
 ```
-documind/
+documind_merged/
 ├── backend/
-│   ├── main.py              # FastAPI app entry point
-│   ├── auth.py              # JWT auth, email verification, user routes
-│   ├── database.py          # SQLite — all tables and queries
-│   ├── documents.py         # Upload, rich extraction, RAG indexing
-│   ├── ai_features.py       # Quiz, flashcards, summary, chat, search
-│   ├── rag_pipeline.py      # ChromaDB + TF-IDF embedder + comparison
+│   ├── main.py              # FastAPI entry point — mounts all 3 routers
+│   ├── auth.py              # JWT auth, email verification, progress endpoints
+│   ├── database.py          # SQLite — 5 tables, migrations, all queries
+│   ├── documents.py         # Upload, extraction, llava vision, RAG indexing
+│   ├── ai_features.py       # Quiz, flashcards, summary, chat, search, weak areas, doc compare
+│   ├── rag_pipeline.py      # ChromaDB + TF-IDF embedder + semantic_compare_rag
 │   ├── requirements.txt
-│   └── uploads/             # Uploaded files (gitignored)
+│   └── uploads/             # Per-user uploaded files (gitignored)
 │
 ├── frontend/
 │   ├── src/
 │   │   ├── App.jsx              # Router + auth guards
-│   │   ├── AuthContext.jsx      # Global auth state
-│   │   ├── AuthPages.jsx        # Login, Signup, Email Verification
+│   │   ├── AuthContext.jsx      # Global auth state (React context)
+│   │   ├── AuthPages.jsx        # Login, Signup, Email Verification pages
 │   │   ├── Landing.jsx          # Three.js animated landing page
-│   │   ├── AppMain.jsx          # Main app — sidebar + 7 tabs
-│   │   ├── DocumentUpload.jsx   # Upload + comparison display
-│   │   ├── Quiz.jsx             # Full quiz with section badges
+│   │   ├── AppMain.jsx          # Shell — sidebar + 8 tabs
+│   │   ├── DocumentUpload.jsx   # Upload, vision status, comparison display
+│   │   ├── Quiz.jsx             # Full quiz with weak area report
 │   │   ├── Summary.jsx          # Streaming summary
 │   │   ├── Flashcards.jsx       # 3D flip flashcards
-│   │   ├── Dashboard.jsx        # Progress dashboard (5 tabs)
+│   │   ├── Dashboard.jsx        # 5-tab progress dashboard
 │   │   ├── Chat.jsx             # Persistent conversational Q&A
 │   │   ├── SemanticSearch.jsx   # Hybrid RAG search
-│   │   ├── api.js               # Axios API helpers
-│   │   └── index.css            # Design system (pastel pink + green)
+│   │   ├── DocCompare.jsx       # Full document version comparison
+│   │   ├── api.js               # Axios client — authAPI, docsAPI, aiAPI
+│   │   └── index.css            # Design system (pastel pink + green theme)
 │   ├── package.json
 │   ├── vite.config.js
 │   └── index.html
 │
+├── screenshots/             # ← add your screenshots here
 └── README.md
 ```
 
@@ -146,57 +302,60 @@ documind/
 
 | Tool | Version | Install |
 |---|---|---|
-| Python | 3.9+ | [python.org](https://python.org) |
+| Python | 3.10+ | [python.org](https://python.org) |
 | Node.js | 18+ | [nodejs.org](https://nodejs.org) |
-| Ollama | Latest | [ollama.ai](https://ollama.ai) |
+| Ollama | Latest | [ollama.com](https://ollama.com) |
 
-### 1. Clone the repository
+### 1. Get the project
 
 ```bash
+# Clone from GitHub:
 git clone https://github.com/tanishipss/Documind-ai.git
-cd Documind-ai
+cd documind_merged
+
+# Or extract the zip and cd into documind_merged/
 ```
 
-### 2. Set up the backend
+### 2. Backend setup
 
 ```bash
-cd documind/backend
+cd backend
 
 # Create virtual environment
-python -m venv .venv
+python -m venv venv
 
 # Activate — Windows
-.venv\Scripts\activate
+venv\Scripts\activate
 
 # Activate — Mac/Linux
-source .venv/bin/activate
+source venv/bin/activate
 
 # Install dependencies
 pip install -r requirements.txt
 ```
 
-### 3. Set up the frontend
+### 3. Frontend setup
 
 ```bash
-cd documind/frontend
+cd frontend
 npm install
 ```
 
-### 4. Pull an Ollama model
+> Vite is already in `package.json` — `npm install` handles everything, no separate Vite install needed.
+
+### 4. Pull Ollama models
 
 ```bash
-# Recommended
+# Required — text LLM for quiz, chat, summary, flashcards
 ollama pull llama3:8b
 
-# Alternatives
-ollama pull mistral:7b
-ollama pull deepseek-r1:7b
-ollama pull llama3.2:3b   # lighter, faster
+# Optional but recommended — vision LLM for images, diagrams, tables-as-images
+ollama pull llava
 ```
 
 ---
 
-## 🚀 Running the Application
+## 🚀 Running the App
 
 Open **3 terminals**:
 
@@ -205,22 +364,25 @@ Open **3 terminals**:
 ollama serve
 ```
 
-**Terminal 2 — Backend**
+**Terminal 2 — Backend** (venv activated)
 ```bash
-cd documind/backend
-python main.py
-# → http://localhost:8000
-# → API docs: http://localhost:8000/docs
+cd backend
+uvicorn main:app --reload --port 8000
 ```
 
 **Terminal 3 — Frontend**
 ```bash
-cd documind/frontend
+cd frontend
 npm run dev
-# → http://localhost:5173
 ```
 
-Open **http://localhost:5173** in your browser.
+Open **[http://localhost:5173](http://localhost:5173)** in your browser.
+
+| Service | URL |
+|---|---|
+| App | http://localhost:5173 |
+| Backend API | http://localhost:8000 |
+| Swagger Docs | http://localhost:8000/docs |
 
 ---
 
@@ -230,12 +392,10 @@ Open **http://localhost:5173** in your browser.
 
 Edit `backend/ai_features.py`:
 ```python
-DEFAULT_MODEL = "llama3:8b"   # change to any model you have pulled
+DEFAULT_MODEL = "llama3:8b"   # swap with any model you have pulled
 ```
 
 ### Enable real email verification
-
-Set environment variables before starting the backend:
 
 ```bash
 # Windows
@@ -253,15 +413,41 @@ export SMTP_PASSWORD=your-app-password
 export APP_URL=http://localhost:5173
 ```
 
-> Without SMTP configured, a verification link is printed directly to the server console — perfect for development.
+> Without SMTP configured, the verification link is printed to the server console — perfect for development.
 
-### Change ports
+---
 
-| Service | Default | Config location |
-|---|---|---|
-| Backend | 8000 | `backend/main.py` → `uvicorn.run(..., port=8000)` |
-| Frontend | 5173 | `frontend/vite.config.js` |
-| Ollama | 11434 | `backend/ai_features.py` → `OLLAMA_BASE` |
+## 📖 Usage Guide
+
+### Standard workflow
+
+```
+1. Upload Document  →  Documents tab
+        ↓
+   Wait for "RAG Pipeline Ready · N chunks indexed"
+        ↓
+2. Pick a feature:
+
+   🧠 Quiz        →  difficulty + question count → Generate Quiz
+   💬 Chat        →  ask anything about your document (streaming)
+   ✨ Summary     →  structured AI summary (streaming)
+   🃏 Flashcards  →  study key concepts with 3D flip cards
+   🔍 Search      →  find passages with relevance scores
+   🔬 Doc Compare →  run full version diff between 2 docs
+   📊 Progress    →  track scores, streaks, and weak areas
+```
+
+### Two-document version comparison
+
+Upload **two versions** of the same document to unlock:
+- Instant semantic diff on upload (similarity %, added/modified/removed sections)
+- **Doc Compare tab** — full report with visual distribution bar and section previews
+- **Dual-mode quiz** — questions from both matched AND updated sections, each labelled
+- **Version-aware regeneration** — quiz only the new/changed content
+
+### Vision AI (diagrams + image tables)
+
+After `ollama pull llava`, re-upload any document containing images. The Upload tab shows a blue **👁️ Vision AI active** banner. Image descriptions are indexed into ChromaDB and become searchable and quizzable like normal text.
 
 ---
 
@@ -271,81 +457,63 @@ export APP_URL=http://localhost:5173
 User Browser
      │
      ▼
-React Frontend (Vite)
-     │  REST + SSE
+React + Vite  (port 5173)
+     │  REST + SSE (streaming)
      ▼
-FastAPI Backend
+FastAPI  (port 8000)
      │
-     ├── Document Upload
-     │        │
-     │        ▼
-     │   Text + Table + Image Extraction
-     │   (pdfplumber / PyMuPDF / python-docx)
-     │        │
-     │        ▼
-     │   Semantic Chunking (600-word, overlapping)
-     │        │
-     │        ▼
-     │   TF-IDF Embeddings (scikit-learn)
-     │        │
-     │        ▼
-     │   ChromaDB Vector Store (per-user, persistent)
-     │
-     ├── Query Time (Quiz / Chat / Search / Flashcards / Summary)
-     │        │
-     │        ▼
-     │   Semantic Retrieval (top-k chunks)
-     │        │
-     │        ▼
-     │   Prompt Construction (RAG context injection)
-     │        │
-     │        ▼
-     │   Ollama LLM (local, no API key)
-     │        │
-     │        ▼
-     │   Structured Output / Streaming Response
-     │
-     └── SQLite
-              ├── users (auth + verification)
-              ├── quiz_history (scores, accuracy, mode)
-              ├── weak_areas (miss counts per topic)
-              ├── learning_guidance (RAG passages per topic)
-              └── chat_history (persistent conversations)
+     ├── /api/auth/*        JWT · bcrypt · email verification · progress
+     ├── /api/documents/*   upload → extract → llava vision → chunk → embed → index
+     └── /api/ai/*          quiz · chat · summary · flashcards · search · weak areas · compare
+                                 │
+                    ┌────────────┴──────────────┐
+                    ▼                           ▼
+              ChromaDB                      Ollama
+         (vector retrieval)          llama3:8b + llava
+         ./chroma_db/                 localhost:11434
+                    │
+                    ▼
+                 SQLite  (documind.db)
+         ┌──────────────────────┐
+         │ users                │
+         │ quiz_history         │
+         │ weak_areas           │
+         │ learning_guidance    │
+         │ chat_history         │
+         └──────────────────────┘
 ```
 
 ---
 
-## 📖 Usage Guide
+## 🐛 Troubleshooting
 
-### First time setup
-
-1. Go to `http://localhost:5173`
-2. Click **Get Started Free** → create an account
-3. Check your server console for the email verification link (dev mode)
-4. Click the link to verify → you're in
-
-### Workflow
-
+**404 error on quiz generate**
 ```
-Upload Document
-      ↓
-Wait for "RAG Pipeline Ready · N chunks indexed"
-      ↓
-Choose a feature:
-  Quiz       → Select difficulty + question count → Generate
-  Chat       → Ask anything about your document
-  Summary    → Get a structured AI summary (streaming)
-  Flashcards → Study key concepts with flip cards
-  Search     → Find specific passages with hybrid search
-  Progress   → Track scores, streaks, weak areas
+httpx.HTTPStatusError: 404 Not Found for url '.../api/generate'
+```
+Run `ollama pull llama3:8b` — the model isn't downloaded yet.
+
+**bcrypt version error**
+```bash
+pip install bcrypt==4.0.1
 ```
 
-### Two-document mode
+**pdfplumber or fitz not found**
+```bash
+pip install pdfplumber pymupdf
+```
 
-Upload **two versions** of a document to unlock:
-- Side-by-side semantic comparison (added / modified / removed sections)
-- **Dual-mode quiz** — questions from both matched AND updated sections
-- **Version-aware regeneration** — quiz only the new content
+**Port 8000 already in use**
+```bash
+uvicorn main:app --reload --port 8001
+# Update frontend/src/api.js → change baseURL port to 8001
+```
+
+**ChromaDB error on first run**
+Delete `backend/chroma_db/` folder and restart backend — it recreates automatically.
+
+**Quiz says "no context" after upload**
+Click **Clear** in the Documents tab → re-upload → wait for "RAG Pipeline Ready" → generate quiz.
 
 ---
 
@@ -356,10 +524,9 @@ fastapi
 uvicorn
 python-multipart
 python-jose[cryptography]
-bcrypt
+bcrypt==4.0.1
 pydantic
 httpx
-PyPDF2
 python-docx
 aiofiles
 chromadb
@@ -373,12 +540,9 @@ pymupdf
 
 ## 🤝 Contributing
 
-Pull requests are welcome!
-
 ```bash
-# Fork the repo, then:
 git checkout -b feature/your-feature
-git commit -m "Add your feature"
+git commit -m "Add: your feature description"
 git push origin feature/your-feature
 # Open a Pull Request
 ```
@@ -395,7 +559,7 @@ MIT License — free to use, modify, and distribute.
 
 **Tanisha Yadav**  
 B.Tech Computer Science | AI/ML  
-Building intelligent systems for document understanding and AI-assisted learning.
+Building intelligent full-stack AI systems for document understanding and adaptive learning.
 
 [![GitHub](https://img.shields.io/badge/GitHub-tanishipss-black?style=flat-square&logo=github)](https://github.com/tanishipss)
 
