@@ -1,0 +1,34 @@
+
+Machine Learning Overview
+
+Machine learning is a subset of artificial intelligence that enables systems
+to learn and improve from experience without being explicitly programmed.
+
+Types of Machine Learning:
+
+1. Supervised Learning
+Supervised learning uses labeled training data to learn a mapping between
+inputs and outputs. The goal is to minimize prediction error on unseen data.
+Common algorithms include linear regression, decision trees, and neural networks.
+
+2. Unsupervised Learning
+Unsupervised learning finds hidden patterns in data without labeled responses.
+Clustering and dimensionality reduction are common unsupervised techniques.
+K-means clustering groups similar data points together.
+
+3. Reinforcement Learning
+Reinforcement learning trains agents to make decisions by rewarding good actions.
+The agent learns a policy that maximizes cumulative reward over time.
+
+Key Concepts:
+
+- Overfitting: When a model learns noise in training data and performs poorly on new data.
+- Underfitting: When a model is too simple to capture underlying patterns.
+- Cross-validation: A technique to evaluate model performance on unseen data.
+- Gradient descent: An optimization algorithm that minimizes a loss function.
+- Hyperparameters: Settings configured before training, like learning rate and depth.
+
+Neural Networks:
+Neural networks consist of layers of interconnected nodes called neurons.
+Deep learning uses neural networks with many layers to learn complex representations.
+Backpropagation is used to calculate gradients and update network weights.
